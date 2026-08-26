@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import gsap from 'gsap';
 import Navbar from './components/Navbar';
 import TerminalProfile from './components/TerminalProfile';
 import SkillsCard from './components/SkillsCard';
@@ -14,6 +15,25 @@ export const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('all');
   const [sortOption, setSortOption] = useState<SortOption>('newest');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const glowOrbRef = useRef<HTMLDivElement>(null);
+
+  // Smooth ambient mouse glow follower
+  useEffect(() => {
+    if (!glowOrbRef.current) return;
+    const orb = glowOrbRef.current;
+
+    const xTo = gsap.quickTo(orb, 'x', { duration: 0.8, ease: 'power2.out' });
+    const yTo = gsap.quickTo(orb, 'y', { duration: 0.8, ease: 'power2.out' });
+
+    const handleMouseMove = (e: MouseEvent) => {
+      xTo(e.clientX);
+      yTo(e.clientY);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const processedProjects = useMemo(() => {
     return projectsData
@@ -54,14 +74,21 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-[#e0e0e0] font-mono relative selection:bg-[#00bcd4] selection:text-black">
-      {/* Subtle Scanline Background */}
-      <div className="terminal-grid-bg"></div>
+    <div className="min-h-screen bg-[#050505] text-[#e0e0e0] font-mono relative selection:bg-[#00bcd4] selection:text-black overflow-hidden">
+      {/* Interactive Cursor Ambient Glow */}
+      <div
+        ref={glowOrbRef}
+        className="pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#00bcd4]/8 rounded-full blur-[100px] -z-0"
+      />
 
+      {/* Cyber Grid Background */}
+      <div className="terminal-grid-bg" />
+
+      {/* Sticky Header Navbar */}
       <Navbar />
 
       {/* Main Container */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 sm:gap-10 items-start">
           {/* Left Sticky Sidebar */}
           <aside className="lg:sticky lg:top-24 flex flex-col gap-6" id="about">
@@ -98,8 +125,8 @@ export const App: React.FC = () => {
       />
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-[#333333] py-8 text-center text-xs text-[#a0a0a0]">
-        <p>&copy; 2026 근면성실아저씨. Built with React 18, Tailwind CSS v4, TypeScript & Vite.</p>
+      <footer className="relative z-10 border-t border-[#222222] py-8 text-center text-xs text-[#888888]">
+        <p>&copy; 2026 근면성실아저씨. Built with React 19, TypeScript, Tailwind CSS & GSAP Animations.</p>
       </footer>
     </div>
   );

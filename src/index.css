@@ -10,13 +10,18 @@
   --color-brand-card: #181818;
   --color-brand-card-hover: #222222;
   --color-brand-accent: #00bcd4;
+  --color-brand-accent-glow: rgba(0, 188, 212, 0.4);
   --color-brand-border: #333333;
   --color-brand-border-light: #2a2a2a;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'JetBrains Mono', 'Pretendard', monospace;
-  background-color: #000000;
+  background-color: #050505;
   color: #e0e0e0;
   line-height: 1.6;
   overflow-x: hidden;
@@ -24,7 +29,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle Terminal Scanline Grid */
+/* Custom Cyber Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00bcd4;
+}
+
+/* Subtle Interactive Terminal Grid & Ambient Glow */
 .terminal-grid-bg {
   position: fixed;
   top: 0;
@@ -34,8 +55,34 @@ body {
   pointer-events: none;
   z-index: 0;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.8;
+    radial-gradient(circle at 50% 0%, rgba(0, 188, 212, 0.08) 0%, transparent 60%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+  opacity: 0.85;
+}
+
+/* Neon Glow Accents */
+.neon-glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.25);
+}
+
+.neon-border-cyan {
+  border-color: rgba(0, 188, 212, 0.6);
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
+}
+
+/* Terminal Cursor Blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: blink 1s step-start infinite;
+}
+
+/* Tilt Card Perspective Wrapper */
+.card-perspective {
+  perspective: 1000px;
 }
