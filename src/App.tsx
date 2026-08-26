@@ -74,7 +74,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#e0e0e0] font-mono relative selection:bg-[#00bcd4] selection:text-black overflow-hidden">
+    <div className="min-h-screen bg-[#050505] text-[#e0e0e0] font-mono relative selection:bg-[#00bcd4] selection:text-black">
       {/* Interactive Cursor Ambient Glow */}
       <div
         ref={glowOrbRef}
@@ -84,11 +84,11 @@ export const App: React.FC = () => {
       {/* Cyber Grid Background */}
       <div className="terminal-grid-bg" />
 
-      {/* Sticky Header Navbar */}
+      {/* Fixed Top Header Navbar */}
       <Navbar />
 
-      {/* Main Container */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 py-8 sm:py-10">
+      {/* Main Container with Top Padding for Fixed Header */}
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 pt-24 pb-12 sm:pt-28 sm:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 sm:gap-10 items-start">
           {/* Left Sticky Sidebar */}
           <aside className="lg:sticky lg:top-24 flex flex-col gap-6" id="about">

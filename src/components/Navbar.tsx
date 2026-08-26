@@ -1,7 +1,22 @@
-import React from 'react';
-import { Mail, Terminal, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Terminal } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const elem = document.getElementById(id);
@@ -20,7 +35,13 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-black/80 backdrop-blur-xl border-b border-[#262626] px-4 sm:px-6 py-3.5 transition-all">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 ${
+        isScrolled
+          ? 'bg-black/90 backdrop-blur-xl border-b border-[#333333] py-3 shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
+          : 'bg-black/60 backdrop-blur-md border-b border-[#222222]/80 py-4'
+      }`}
+    >
       <div className="max-w-[1280px] mx-auto flex justify-between items-center">
         {/* Brand Terminal Path */}
         <a
