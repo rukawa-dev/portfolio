@@ -9,23 +9,39 @@ export const SkillsCard: React.FC = () => {
   useGSAP(() => {
     if (!cardRef.current) return;
 
-    gsap.from(cardRef.current.querySelectorAll('.skill-category'), {
-      y: 20,
-      opacity: 0,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: 'power2.out',
-      delay: 0.4,
-    });
+    const categories = cardRef.current.querySelectorAll('.skill-category');
+    const pills = cardRef.current.querySelectorAll('.skill-pill');
 
-    gsap.from(cardRef.current.querySelectorAll('.skill-pill'), {
-      scale: 0.85,
-      opacity: 0,
-      stagger: 0.03,
-      duration: 0.4,
-      ease: 'back.out(1.7)',
-      delay: 0.6,
-    });
+    if (categories.length > 0) {
+      gsap.fromTo(
+        categories,
+        { y: 15, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: 'power2.out',
+          clearProps: 'transform,opacity',
+        }
+      );
+    }
+
+    if (pills.length > 0) {
+      gsap.fromTo(
+        pills,
+        { scale: 0.9, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          stagger: 0.02,
+          duration: 0.35,
+          ease: 'back.out(1.5)',
+          delay: 0.2,
+          clearProps: 'transform,opacity',
+        }
+      );
+    }
   }, { scope: cardRef });
 
   return (
@@ -39,7 +55,7 @@ export const SkillsCard: React.FC = () => {
           <Sparkles size={16} className="text-[#00bcd4] animate-pulse" />
           <span>Tech Stack & Competencies</span>
         </div>
-        <span className="text-[10px] text-[#00bcd4] bg-[#00bcd4]/10 border border-[#00bcd4]/30 px-2 py-0.5 rounded">
+        <span className="text-[10px] text-[#00bcd4] bg-[#00bcd4]/10 border border-[#00bcd4]/30 px-2 py-0.5 rounded font-mono">
           CORE
         </span>
       </div>

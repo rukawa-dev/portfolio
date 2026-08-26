@@ -42,22 +42,23 @@ export const TerminalProfile: React.FC<TerminalProfileProps> = ({ totalProjectsC
     const tl = gsap.timeline({ delay: 0.2 });
 
     // Terminal window popup
-    tl.from(containerRef.current, {
-      y: 30,
-      opacity: 0,
-      duration: 0.7,
-      ease: 'power3.out',
-    });
+    tl.fromTo(
+      containerRef.current,
+      { y: 25, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity' }
+    );
 
     // Animate content items stagger
     if (contentRef.current) {
-      tl.from(contentRef.current.querySelectorAll('.meta-row'), {
-        x: -15,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 0.5,
-        ease: 'power2.out',
-      }, '-=0.3');
+      const rows = contentRef.current.querySelectorAll('.meta-row');
+      if (rows.length > 0) {
+        tl.fromTo(
+          rows,
+          { x: -12, opacity: 0 },
+          { x: 0, opacity: 1, stagger: 0.06, duration: 0.4, ease: 'power2.out', clearProps: 'transform,opacity' },
+          '-=0.2'
+        );
+      }
     }
 
     // Number counters
