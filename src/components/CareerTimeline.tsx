@@ -64,21 +64,21 @@ export const CareerTimeline: React.FC = () => {
         <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Career Timeline</h2>
       </div>
 
-      <div className="relative pl-6 sm:pl-8">
+      <div className="relative pl-8 sm:pl-10">
         {/* Background static line */}
-        <div className="absolute left-[11px] sm:left-[15px] top-4 bottom-4 w-[2px] bg-[#222222]" />
+        <div className="absolute left-4 sm:left-5 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-[#222222]" />
 
         {/* Animated glowing cyan line on scroll */}
         <div
           ref={timelineLineRef}
-          className="absolute left-[11px] sm:left-[15px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#00bcd4] via-[#26c6da] to-[#00bcd4] shadow-[0_0_8px_rgba(0,188,212,0.8)] z-10"
+          className="absolute left-4 sm:left-5 top-4 bottom-4 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#00bcd4] via-[#26c6da] to-[#00bcd4] shadow-[0_0_8px_rgba(0,188,212,0.8)] z-10"
         />
 
         <div className="flex flex-col gap-6">
           {careerData.map((item, idx) => (
             <div key={`${item.company}-${idx}`} className="timeline-item relative group">
               {/* Timeline Node Icon */}
-              <div className="absolute -left-[30px] sm:-left-[38px] top-5 z-20 w-6 h-6 rounded-full bg-[#121212] border-2 border-[#00bcd4] flex items-center justify-center shadow-[0_0_10px_rgba(0,188,212,0.4)] group-hover:scale-110 group-hover:bg-[#00bcd4] transition-all duration-300">
+              <div className="absolute -left-4 sm:-left-5 -translate-x-1/2 top-5 z-20 w-6 h-6 rounded-full bg-[#121212] border-2 border-[#00bcd4] flex items-center justify-center shadow-[0_0_10px_rgba(0,188,212,0.4)] group-hover:scale-110 group-hover:bg-[#00bcd4] transition-all duration-300">
                 <div className="w-2 h-2 rounded-full bg-[#00bcd4] group-hover:bg-black transition-colors" />
               </div>
 
