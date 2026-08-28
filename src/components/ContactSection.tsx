@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Terminal, Code2 } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -42,24 +42,19 @@ export const ContactSection: React.FC = () => {
             GitHub를 통해 작업물과 소스코드를 확인해 보세요.
           </p>
           
-          <div className="flex flex-wrap justify-center items-center gap-4">
+          <div className="flex justify-center items-center">
             <a
               href="https://github.com/rukawa-dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#00bcd4] hover:bg-[#26c6da] text-black font-bold text-sm rounded-xl transition-all duration-200 hover:scale-105 shadow-[0_0_20px_rgba(0,188,212,0.35)] cursor-pointer"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#00bcd4] hover:bg-[#26c6da] text-black font-bold text-sm rounded-xl transition-all duration-200 hover:scale-105 shadow-[0_0_25px_rgba(0,188,212,0.4)] cursor-pointer"
             >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
                 <path d="M9 18c-4.51 2-5-2-7-2"></path>
               </svg>
               <span>GitHub 바로가기</span>
             </a>
-
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-[#181818] border border-[#333333] text-[#a0a0a0] font-semibold text-sm rounded-xl">
-              <Code2 size={16} className="text-[#00bcd4]" />
-              <span>Senior Publisher & Frontend Dev</span>
-            </div>
           </div>
         </div>
       </div>
