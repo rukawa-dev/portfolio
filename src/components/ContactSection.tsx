@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Terminal, MessageSquare } from 'lucide-react';
+import { Terminal, Code2 } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -31,7 +31,7 @@ export const ContactSection: React.FC = () => {
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00bcd4]/10 border border-[#00bcd4]/30 text-[#00bcd4] text-xs font-mono mb-4">
             <Terminal size={13} />
-            <span>$ ./inquiry.sh</span>
+            <span>$ ./connect.sh</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2.5 tracking-tight">
@@ -39,7 +39,7 @@ export const ContactSection: React.FC = () => {
           </h2>
           <p className="text-sm text-[#a0a0a0] max-w-lg mx-auto mb-8 leading-relaxed">
             새로운 프로젝트 협업 및 웹 퍼블리싱 / 프론트엔드 개발 문의를 환영합니다.<br className="hidden sm:inline" />
-            크몽 메시지 또는 GitHub를 통해 문의해 주세요.
+            GitHub를 통해 작업물과 소스코드를 확인해 보세요.
           </p>
           
           <div className="flex flex-wrap justify-center items-center gap-4">
@@ -56,9 +56,9 @@ export const ContactSection: React.FC = () => {
               <span>GitHub 바로가기</span>
             </a>
 
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-[#181818] border border-[#333333] text-[#e0e0e0] font-semibold text-sm rounded-xl shadow-md">
-              <MessageSquare size={16} className="text-[#00bcd4]" />
-              <span>크몽 1:1 메시지 문의 환영</span>
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-[#181818] border border-[#333333] text-[#a0a0a0] font-semibold text-sm rounded-xl">
+              <Code2 size={16} className="text-[#00bcd4]" />
+              <span>Senior Publisher & Frontend Dev</span>
             </div>
           </div>
         </div>
