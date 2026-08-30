@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>크몽 상세 브로슈어 (웹 퍼블리싱 전문)</title>
+  <!-- Pretendard 폰트 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; background-color: #0b0f19; color: #1e293b; display: flex; flex-direction: column; align-items: center; }
+    .brochure-container { width: 860px; background: #ffffff; overflow: hidden; }
+
+    /* ================= 1. HERO SECTION (매트 블랙 럭셔리) ================= */
+    .hero-section {
+      background: radial-gradient(circle at 50% 20%, #1e293b 0%, #090d16 80%);
+      padding: 75px 60px 65px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .brand-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .brand-logo-symbol {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      color: #ffffff;
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.45);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-slogan {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 2.5px;
+    }
+
+    .main-title {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -1.2px;
+      margin-bottom: 16px;
+    }
+
+    .main-title span {
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-skills {
+      font-size: 17px;
+      font-weight: 600;
+      color: #cbd5e1;
+      letter-spacing: 1px;
+      margin-bottom: 50px;
+    }
+
+    .sub-skills span {
+      color: #38bdf8;
+      margin: 0 8px;
+    }
+
+    /* Device Mockup Showcase */
+    .mockup-wrap {
+      position: relative;
+      margin: 0 auto 50px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .laptop-frame {
+      width: 530px;
+      background: #0f172a;
+      border-radius: 14px 14px 0 0;
+      border: 4px solid #334155;
+      border-bottom: none;
+      padding: 10px 10px 0;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .laptop-screen {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      height: 280px;
+      border: 1px solid #334155;
+      position: relative;
+    }
+
+    .laptop-nav {
+      background: #1e293b;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+    }
+
+    .laptop-nav-logo { font-size: 12px; font-weight: 800; color: #38bdf8; }
+    .laptop-nav-links { display: flex; gap: 14px; font-size: 10px; color: #94a3b8; font-weight: 600; }
+
+    .laptop-hero-body {
+      padding: 30px 24px;
+      text-align: left;
+    }
+
+    .laptop-hero-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .laptop-hero-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .laptop-hero-desc {
+      font-size: 11.5px;
+      color: #94a3b8;
+      line-height: 1.5;
+      max-width: 320px;
+    }
+
+    .laptop-base {
+      width: 600px;
+      height: 16px;
+      background: #475569;
+      border-radius: 0 0 12px 12px;
+      margin: 0 auto;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .phone-frame {
+      width: 140px;
+      height: 270px;
+      background: #0f172a;
+      border-radius: 28px;
+      border: 4px solid #475569;
+      overflow: hidden;
+      position: absolute;
+      right: 70px;
+      bottom: 10px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85);
+    }
+
+    .phone-notch {
+      width: 60px;
+      height: 12px;
+      background: #1e293b;
+      margin: 6px auto 0;
+      border-radius: 10px;
+    }
+
+    .phone-body {
+      padding: 16px 12px;
+      text-align: left;
+    }
+
+    .phone-tag {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .phone-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .phone-bar {
+      height: 4px;
+      background: #334155;
+      border-radius: 2px;
+      margin-bottom: 5px;
+    }
+
+    /* Curved Promise Slogan */
+    .curved-promise {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 38px 45px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      text-align: left;
+      margin-top: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .curved-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ef4444, #991b1b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffffff;
+      flex-shrink: 0;
+      box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .curved-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #e2e8f0;
+      line-height: 1.65;
+    }
+
+    .curved-text strong.red { color: #f87171; font-weight: 800; }
+    .curved-text strong.cyan { color: #38bdf8; font-weight: 800; }
+
+    /* ================= 2. TRUST BADGES SECTION (골드 엠블럼 3종) ================= */
+    .trust-section {
+      background: #090d16;
+      padding: 55px 60px;
+      border-top: 1px solid #1e293b;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+    }
+
+    .gold-badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .gold-medal {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fef08a 0%, #eab308 45%, #ca8a04 80%, #a16207 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(234, 179, 8, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.9);
+      border: 3px solid #fef08a;
+      position: relative;
+    }
+
+    .gold-medal-year {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #713f12;
+    }
+
+    .gold-medal-text {
+      font-size: 14px;
+      font-weight: 900;
+      color: #422006;
+      letter-spacing: -0.5px;
+    }
+
+    .gold-medal-stars {
+      font-size: 9px;
+      color: #713f12;
+      margin-top: 1px;
+    }
+
+    .badge-label-kmong {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+    }
+
+    .badge-label-kmong span { color: #facc15; }
+    .badge-sub { font-size: 13.5px; color: #94a3b8; font-weight: 500; }
+
+    /* ================= 3. CORE PRINCIPLES & GUARANTEE SECTION (4대 원칙 & 프로세스) ================= */
+    .guarantee-section {
+      background: #f8fafc;
+      padding: 75px 60px 85px;
+      text-align: center;
+    }
+
+    .section-header {
+      margin-bottom: 45px;
+    }
+
+    .section-title {
+      font-size: 35px;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.35;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-title strong {
+      color: #0284c7;
+      position: relative;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* 4대 원칙 카드 그리드 */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 740px;
+      margin: 0 auto 50px;
+      text-align: left;
+    }
+
+    .principle-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 28px 26px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .principle-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0284c7;
+      background: #e0f2fe;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    .principle-card h3 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .principle-card p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Process Flow Container */
+    .process-banner {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 35px 35px 30px;
+      max-width: 740px;
+      margin: 0 auto;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+      text-align: left;
+    }
+
+    .process-banner-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .process-steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .step-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+
+    .step-circle {
+      width: 34px;
+      height: 34px;
+      background: #0f172a;
+      color: #38bdf8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      margin: 0 auto 10px;
+    }
+
+    .step-name {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .step-sub {
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* Bottom Contact CTA */
+    .bottom-cta {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 40px 50px;
+      text-align: center;
+      border-top: 1px solid #334155;
+    }
+
+    .bottom-cta h3 { font-size: 23px; font-weight: 800; margin-bottom: 10px; }
+    .bottom-cta h3 span { color: #38bdf8; }
+    .bottom-cta p { font-size: 15.5px; color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+  <div class="brochure-container">
+
+    <!-- 1. HERO SECTION (매트 블랙 럭셔리 & 3D 목업) -->
+    <div class="hero-section">
+      <div class="brand-top">
+        <div class="brand-logo-symbol">&lt;/&gt;</div>
+        <div class="brand-slogan">디테일의 차이가 완성도를 만듭니다</div>
+      </div>
+
+      <h1 class="main-title">
+        웹 퍼블리싱 전문 서비스<br>
+        <span>1:1 픽셀 퍼펙트 • 완벽 반응형</span>
+      </h1>
+
+      <div class="sub-skills">
+        HTML5 <span>•</span> CSS3 / SCSS <span>•</span> JavaScript <span>•</span> jQuery <span>•</span> React Markup
+      </div>
+
+      <!-- 반응형 디바이스 목업 쇼케이스 -->
+      <div class="mockup-wrap">
+        <div class="laptop-frame">
+          <div class="laptop-screen">
+            <div class="laptop-nav">
+              <div class="laptop-nav-logo">PORTFOLIO STUDIO</div>
+              <div class="laptop-nav-links">
+                <span>ABOUT</span>
+                <span>WORKS</span>
+                <span>SKILLS</span>
+                <span>CONTACT</span>
+              </div>
+            </div>
+            <div class="laptop-hero-body">
+              <div class="laptop-hero-tag">RESPONSIVE WEB PUBLISHING</div>
+              <div class="laptop-hero-title">디자인 원본 그대로 100% 구현<br>웹 표준 & 크로스브라우징 보장</div>
+              <div class="laptop-hero-desc">PC, 태블릿, 모바일 모든 해상도에서 1px의 오차 없이 완벽하게 작동하는 마크업을 제공합니다.</div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-body">
+            <div class="phone-tag">MOBILE UI</div>
+            <div class="phone-title">완벽한 모바일<br>터치 최적화</div>
+            <div class="phone-bar" style="width: 85%;"></div>
+            <div class="phone-bar" style="width: 60%;"></div>
+            <div class="phone-bar" style="width: 75%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 감성 신뢰 슬로건 카드 -->
+      <div class="curved-promise">
+        <div class="curved-logo">14y</div>
+        <div class="curved-text">
+          수백 건 실무 프로젝트 노하우를 토대로<br>
+          <strong class="red">웹 표준, 웹 접근성</strong>을 철저히 고려하여<br>
+          <strong class="cyan">고객의 프로젝트</strong>에 딱 맞는 최적의 마크업 코드를 완성합니다.
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 2. TRUST BADGES SECTION (골드 인증 엠블럼 3종) -->
+    <div class="trust-section">
+      <div class="gold-badge-item">
+        <div class="gold-medal">
+          <div class="gold-medal-year">14 YEARS</div>
+          <div class="gold-medal-text">MASTER</div>
+          <div class="gold-medal-stars">★★★</div>
+        </div>
+        <div class="badge-label-kmong"><span>14년 경력</span> 시니어 퍼블리셔</div>
+        <div class="badge-sub">대기업 및 에이전시 실무 검증</div>
+      </div>
+
+      <div class="gold-badge-item">
+        <div class="gold-medal">
+          <div class="gold-medal-year">ACCURACY</div>
+          <div class="gold-medal-text">100%</div>
+          <div class="gold-medal-stars">★★★</div>
+        </div>
+        <div class="badge-label-kmong"><span>1:1 픽셀</span> 퍼펙트 마크업</div>
+        <div class="badge-sub">Figma / XD / PSD 완벽 대응</div>
+      </div>
+
+      <div class="gold-badge-item">
+        <div class="gold-medal">
+          <div class="gold-medal-year">RESPONSIVE</div>
+          <div class="gold-medal-text">PERFECT</div>
+          <div class="gold-medal-stars">★★★</div>
+        </div>
+        <div class="badge-label-kmong"><span>크로스 브라우징</span> 호환성 보장</div>
+        <div class="badge-sub">PC / Tablet / Mobile 전 기기 지원</div>
+      </div>
+    </div>
+
+
+    <!-- 3. CORE PRINCIPLES & PROCESS SECTION (4대 품질 원칙 & 4단계 프로세스) -->
+    <div class="guarantee-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          14년차 시니어 퍼블리셔가 약속하는<br>
+          <strong>4대 품질 보증 원칙</strong>
+        </h2>
+        <p class="section-desc">오직 마크업과 웹 퍼블리싱 본업에 집중하여 최고 수준의 결과물을 납품합니다.</p>
+      </div>
+
+      <!-- 4대 원칙 그리드 -->
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="principle-num">PRINCIPLE 01</div>
+          <h3>1:1 픽셀 퍼펙트 구현</h3>
+          <p>Figma, Adobe XD, Photoshop 시안의 여백, 폰트 자간, 레이아웃을 1px의 오차 없이 브라우저에 정밀하게 구현합니다.</p>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-num">PRINCIPLE 02</div>
+          <h3>유연한 반응형 미디어쿼리</h3>
+          <p>PC, 태블릿, 모바일 등 다양한 기기와 뷰포트에서 깨짐 없이 부드럽게 흐르는 최적화된 반응형 코드를 작성합니다.</p>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-num">PRINCIPLE 03</div>
+          <h3>크로스 브라우징 완벽 호환</h3>
+          <p>Chrome, Safari, Edge 및 iOS/Android 모바일 브라우저 환경에서 동일한 렌더링과 매끄러운 경험을 보장합니다.</p>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-num">PRINCIPLE 04</div>
+          <h3>시맨틱 마크업 & 웹 접근성</h3>
+          <p>SEO(검색엔진 최적화)와 W3C 표준을 준수하며, 직관적인 네이밍과 주석 처리로 사내 개발자 인계가 매우 수월합니다.</p>
+        </div>
+      </div>
+
+      <!-- 4단계 작업 프로세스 -->
+      <div class="process-banner">
+        <div class="process-banner-title">
+          <span>🚀</span> 신속하고 정확한 4단계 작업 프로세스
+        </div>
+        <div class="process-steps-row">
+          <div class="step-box">
+            <div class="step-circle">01</div>
+            <div class="step-name">디자인 검토</div>
+            <div class="step-sub">Figma / XD / PSD 시안 및 요구사항 확인</div>
+          </div>
+          <div class="step-box">
+            <div class="step-circle">02</div>
+            <div class="step-name">견적/일정 확정</div>
+            <div class="step-sub">합리적인 견적과 납기 일정 조율</div>
+          </div>
+          <div class="step-box">
+            <div class="step-circle">03</div>
+            <div class="step-name">퍼블리싱 제작</div>
+            <div class="step-sub">웹 표준 마크업 & 크로스체크</div>
+          </div>
+          <div class="step-box">
+            <div class="step-circle">04</div>
+            <div class="step-name">검수 & 최종 납품</div>
+            <div class="step-sub">수정사항 즉시 반영 및 소스코드 전달</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 4. BOTTOM CALLOUT -->
+    <div class="bottom-cta">
+      <h3>프로젝트 문의 및 견적 상담은 <span>1:1 메시지</span>로 언제든 편하게 남겨주세요!</h3>
+      <p>보유하신 디자인 파일(Figma, XD, PSD)을 보내주시면 가장 빠르고 정확하게 안내해 드립니다.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
